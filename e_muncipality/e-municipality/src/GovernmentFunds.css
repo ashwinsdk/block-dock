@@ -1,0 +1,54 @@
+.funds-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.funds-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.funds-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.funds-table th {
+    background-color: #0981de;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: left;
+}
+
+.funds-table td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    color: #333;
+    font-size: 1em;
+}
+
+.funds-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.funds-table tr:hover {
+    background-color: #e9ecef;
+}
