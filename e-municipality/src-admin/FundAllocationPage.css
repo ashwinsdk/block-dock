@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.fund-allocation-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header, .footer {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background-color: #2c3e50;
+}
+
+.header h1, .footer p {
+  margin: 0;
+  color: #fff;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.fund-allocation-container h2, .content h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.financial-summary {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+  background-color: #e6f7ff;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.new-project-form, .projects-list {
+  margin-bottom: 40px;
+}
+
+.new-project-form h3 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.new-project-form input {
+  display: block;
+  width: calc(100% - 20px);
+  max-width: 400px;
+  margin: 10px auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.new-project-form button {
+  display: block;
+  width: calc(100% - 20px);
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.new-project-form button:hover {
+  background-color: #45a049;
+}
+
+.fund-allocation-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.fund-allocation-table th {
+  background-color: #add8e6;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+.fund-allocation-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.fund-allocation-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.fund-allocation-table tr:hover {
+  background-color: #ddd;
+}
+
+.fund-allocation-table input[type="number"],
+.fund-allocation-table input[type="date"] {
+  padding: 5px;
+  width: 120px;
+  margin-right: 10px;
+}
+
+.fund-allocation-table button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+}
+
+.fund-allocation-table button:hover {
+  background-color: #45a049;
+}
