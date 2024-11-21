@@ -39,12 +39,12 @@
 .button-group {
     display: flex;
     justify-content: space-between;
-    gap: 10px; /* Space between buttons */
-    margin-top: 1rem; /* Add space between buttons and input field */
+    gap: 10px; 
+    margin-top: 1rem; 
 }
 
 .button-group button {
-    flex: 1; /* Make buttons evenly sized */
+    flex: 1; 
     padding: 0.7rem;
     background-color: #3498db;
     color: #fff;
@@ -61,9 +61,9 @@
 }
 
 .button-group button:first-child {
-    margin-right: 5px; /* Optional: Adjust if needed */
+    margin-right: 5px; 
 }
 
 .button-group button:last-child {
-    margin-left: 5px; /* Optional: Adjust if needed */
+    margin-left: 5px; 
 }

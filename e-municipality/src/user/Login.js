@@ -9,9 +9,9 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    // Navigate based on user type
+    
     if (userType === 'user') {
-      navigate('/user-dashboard'); // Make sure this matches the route in App.js
+      navigate('/user-dashboard'); 
     } else if (userType === 'admin') {
       navigate('/municipality-home');
     } else if (userType === 'government') {
@@ -22,7 +22,7 @@ function Login() {
   };
 
   const handleConnect = () => {
-    // Implement connect logic if required
+    
     alert('Connect button clicked!');
   };
 
