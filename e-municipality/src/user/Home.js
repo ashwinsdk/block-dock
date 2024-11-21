@@ -14,11 +14,9 @@ function Home() {
             Contact Us
           </Link>
           <Link to="/login" className="navbar-link">
-            Login
+            Connect
           </Link>
-          <Link to="/ongoing-projects" className="navbar-link">
-            Ongoing Projects
-          </Link>
+          
         </div>
       </header>
 
