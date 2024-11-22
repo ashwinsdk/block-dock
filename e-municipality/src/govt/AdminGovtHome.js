@@ -16,8 +16,8 @@ const AdminGovtHome = () => {
           <Link to="/view-fund-allocation">View Fund Allocation</Link>
           <Link to="/view-people-data">View People Data</Link>
           <Link to="/view-taxes">View Taxes</Link>
-          <Link to="/view-ongoing-projects">View On-going Projects</Link>
-          <Link to="/view-municipality-head">View Municipality Head Details</Link>
+          <Link to="/ongoing-projects">View On-going Projects</Link>
+          <Link to="/contact-us">Municipality Admin Details</Link>
         </div>
       </main>
       <footer className="footer">
