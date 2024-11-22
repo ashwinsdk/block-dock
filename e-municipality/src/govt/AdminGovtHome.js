@@ -13,7 +13,7 @@ const AdminGovtHome = () => {
         <div className="admin-govt-links">
           <Link to="/send-funds">Send Funds</Link>
           <Link to="/view-grievance-status">View Grievance Status</Link>
-          <Link to="/view-fund-allocation">View Fund Allocation</Link>
+          
           <Link to="/view-people-data">View People Data</Link>
           <Link to="/view-taxes">View Taxes</Link>
           <Link to="/ongoing-projects">View On-going Projects</Link>
