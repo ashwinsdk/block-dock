@@ -9,20 +9,18 @@ function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    
     if (userType === 'user') {
-      navigate('/user-dashboard'); 
+      navigate('/user-dashboard');
     } else if (userType === 'admin') {
-      navigate('/municipality-home');
+      navigate('/admin-head-home'); // Redirect to AdminHeadHome
     } else if (userType === 'government') {
-      navigate('/government-home');
+      navigate('/admin-govt-home'); // Redirect to AdminGovtHome
     } else {
       alert('Please select a valid user type');
     }
   };
 
   const handleConnect = () => {
-    
     alert('Connect button clicked!');
   };
 
