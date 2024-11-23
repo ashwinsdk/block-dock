@@ -27,7 +27,7 @@ const AdminHeadHome = () => {
             icon={<FaClipboardList />}
             title="View Grievance" 
             description="Review and resolve grievances raised by city residents." 
-            onClick={() => navigate('/view-grievances')} 
+            onClick={() => navigate('/view-grievance')} 
           />
           <FeatureCard 
             icon={<FaFileInvoiceDollar />}
