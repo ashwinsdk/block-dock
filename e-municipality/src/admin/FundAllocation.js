@@ -13,6 +13,7 @@ const FundAllocationPage = () => {
   const [ongoingProjects, setOngoingProjects] = useState([]);
   const [completedProjects, setCompletedProjects] = useState([]);
   const [deadlineExtensions, setDeadlineExtensions] = useState({});
+ 
   const [totalReceivedFunds, setTotalReceivedFunds] = useState(200000); // Example total received funds
   const [remainingFunds, setRemainingFunds] = useState(totalReceivedFunds);
 

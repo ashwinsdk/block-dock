@@ -10,9 +10,7 @@ function Home() {
         <div className="navbar-links"></div>
         <div className="navbar-title">E-Municipality</div>
         <div className="navbar-links">
-          <Link to="/contact-us" className="navbar-link">
-            Contact Us
-          </Link>
+          
           <Link to="/login" className="navbar-link">
             Connect
           </Link>
