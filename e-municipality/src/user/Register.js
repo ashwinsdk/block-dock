@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
-import './Register.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Register.css";
 
 function Register() {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [dob, setDob] = useState('');
-  const [wardNo, setWardNo] = useState('');
-  const [phoneNo, setPhoneNo] = useState('');
-  const [email, setEmail] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [reEnterPassword, setReEnterPassword] = useState('');
-  const [address, setAddress] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [dob, setDob] = useState("");
+  const [wardNo, setWardNo] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
+  const [email, setEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [reEnterPassword, setReEnterPassword] = useState("");
+  const [address, setAddress] = useState("");
 
-  // Handle form submission and validation
   const handleRegister = (e) => {
-    e.preventDefault(); // Prevent default form submission
+    e.preventDefault();
 
-    if (!firstName || !lastName || !dob || !wardNo || !phoneNo || !email || !newPassword || !reEnterPassword || !address) {
+    if (
+      !firstName ||
+      !lastName ||
+      !dob ||
+      !wardNo ||
+      !phoneNo ||
+      !email ||
+      !newPassword ||
+      !reEnterPassword ||
+      !address
+    ) {
       alert("All fields must be filled!");
       return;
     }
@@ -26,92 +36,106 @@ function Register() {
       return;
     }
 
-    // If everything is valid, display a success message
-    alert('Registration successful!');
-    // You can also handle the form data submission here, e.g., send data to a backend
+    alert("Registration successful!");
   };
 
   return (
-    <div className="register">
-      <h2>Register</h2>
-      
-      <form onSubmit={handleRegister}>
-        <label>First Name</label>
-        <input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          placeholder="Enter your first name"
-        />
+    <div className="layout">
+      {/* Header */}
+      <header className="navbar">
+        <div className="navbar-title">E-Municipality</div>
+        <div className="navbar-links">
+          <Link to="/" className="navbar-link">Home</Link>
+        </div>
+      </header>
 
-        <label>Last Name</label>
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          placeholder="Enter your last name"
-        />
+     
+      <br></br><br></br>
+      <div className="register">
+        <h2>Register</h2>
+        <form onSubmit={handleRegister}>
+          <label>First Name</label>
+          <input
+            type="text"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            placeholder="Enter your first name"
+          />
 
-        <label>Date of Birth</label>
-        <input
-          type="date"
-          value={dob}
-          onChange={(e) => setDob(e.target.value)}
-        />
+          <label>Last Name</label>
+          <input
+            type="text"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            placeholder="Enter your last name"
+          />
 
-        <label>Ward Number</label>
-        <input
-          type="text"
-          value={wardNo}
-          onChange={(e) => setWardNo(e.target.value)}
-          placeholder="Enter ward number"
-        />
+          <label>Date of Birth</label>
+          <input
+            type="date"
+            value={dob}
+            onChange={(e) => setDob(e.target.value)}
+          />
 
-        <label>Phone Number</label>
-        <input
-          type="tel"
-          value={phoneNo}
-          onChange={(e) => setPhoneNo(e.target.value)}
-          placeholder="Enter phone number"
-        />
+          <label>Ward Number</label>
+          <input
+            type="text"
+            value={wardNo}
+            onChange={(e) => setWardNo(e.target.value)}
+            placeholder="Enter ward number"
+          />
 
-        <label>Email Address</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter email address"
-        />
+          <label>Phone Number</label>
+          <input
+            type="tel"
+            value={phoneNo}
+            onChange={(e) => setPhoneNo(e.target.value)}
+            placeholder="Enter phone number"
+          />
 
-        <label>Create New Password</label>
-        <input
-          type="password"
-          value={newPassword}
-          onChange={(e) => setNewPassword(e.target.value)}
-          placeholder="Enter a new password"
-        />
+          <label>Email Address</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter email address"
+          />
 
-        <label>Re-enter Password</label>
-        <input
-          type="password"
-          value={reEnterPassword}
-          onChange={(e) => setReEnterPassword(e.target.value)}
-          placeholder="Re-enter your password"
-        />
+          <label>Create New Password</label>
+          <input
+            type="password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            placeholder="Enter a new password"
+          />
 
-        <label>Address</label>
-        <textarea
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          placeholder="Enter your address"
-        ></textarea>
+          <label>Re-enter Password</label>
+          <input
+            type="password"
+            value={reEnterPassword}
+            onChange={(e) => setReEnterPassword(e.target.value)}
+            placeholder="Re-enter your password"
+          />
 
-        <button type="submit">Register</button>
-      </form>
+          <label>Address</label>
+          <textarea
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            placeholder="Enter your address"
+          ></textarea>
 
-      <p>
-        Already have an account? <a href="/login">Login here</a>
-      </p>
+          <button type="submit">Register</button>
+        </form>
+
+        <p>
+          Already have an account? <a href="/login">Login here</a>
+        </p>
+      </div>
+
+      {/* Footer */}
+      <footer className="footer">
+        <p>&copy; 2024 E-Municipality. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
