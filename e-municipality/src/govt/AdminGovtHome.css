@@ -53,9 +53,13 @@ html, body {
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  width: 80%;
+  width: 100%; /* Ensures the card takes full width */
   max-width: 300px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Creates space between content */
+  align-items: center; /* Centers content horizontally */
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -65,14 +69,9 @@ html, body {
   color: #555;
 }
 
-.feature-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
 .feature-button {
-  display: block;
-  width: 100%;
+  display: inline-block;
+  width: 100%; /* Ensures button takes full width */
   padding: 10px;
   font-size: 1rem;
   color: #fff;
@@ -85,8 +84,19 @@ html, body {
   text-decoration: none;
 }
 
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
 .feature-button:hover {
   background-color: #0056b3;
+}
+
+@media (max-width: 768px) {
+  .admin-govt-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 600px) {

@@ -37,7 +37,7 @@ const SendFunds = () => {
   return (
     <div className="send-funds">
       <header className="header">
-        <h1>Government Admin Dashboard</h1>
+        <h1> E-Municipality</h1>
       </header>
       <main className="content">
         <h2>Send Funds</h2>

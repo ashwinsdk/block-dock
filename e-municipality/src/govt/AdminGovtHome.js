@@ -33,7 +33,7 @@ const AdminGovtHome = () => {
           </div>
           <div className="feature-card">
             <p>Get in touch with municipality administrators for any assistance or queries.</p>
-            <Link to="/contact-us" className="feature-button">Municipality Admin Details</Link>
+            <Link to="/contact-us" className="feature-button">Administrators Details</Link>
           </div>
         </div>
       </main>
