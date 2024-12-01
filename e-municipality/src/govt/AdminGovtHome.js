@@ -7,6 +7,7 @@ const AdminGovtHome = () => {
     <div className="admin-govt-home">
       <header className="header">
         <h1>Government Admin Dashboard</h1>
+        <Link to="/govt/assign-admin-head" className="assign-button">Assign Admin Head</Link>
       </header>
       <main className="content">
         <h2>Welcome to the Government Admin Dashboard</h2>

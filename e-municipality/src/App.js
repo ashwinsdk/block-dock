@@ -21,6 +21,7 @@ import ViewTaxes from './admin/ViewTaxes';
 import AdminGovtHome from './govt/AdminGovtHome';
 import SendFunds from './govt/SendFunds';
 import ViewGrievanceStatus from './govt/ViewGrievanceStatus';
+import AssignAdminHead from './govt/AssignAdminHead';
 
 import './App.css';
 
@@ -45,7 +46,7 @@ function App() {
           <Route path="/admin-head-home" element={<AdminHeadHome />} />
           <Route path="/fund-allocation" element={<FundAllocation />} />
           <Route path="/receive-fund" element={<ReceiveFund />} />
-          <Route path="/view-grievance" element={<ViewGrievance />} />  {/* Correct route */}
+          <Route path="/view-grievance" element={<ViewGrievance />} />
           <Route path="/view-people-data" element={<ViewPeopleData />} />
           <Route path="/view-taxes" element={<ViewTaxes />} />
 
@@ -53,6 +54,7 @@ function App() {
           <Route path="/admin-govt-home" element={<AdminGovtHome />} />
           <Route path="/send-funds" element={<SendFunds />} />
           <Route path="/govt/view-grievance-status" element={<ViewGrievanceStatus />} />
+          <Route path="/govt/assign-admin-head" element={<AssignAdminHead />} />
 
           {/* Placeholder routes for features not implemented yet */}
           <Route path="/view-fund-allocation" element={<div>Fund Allocation Placeholder</div>} />
