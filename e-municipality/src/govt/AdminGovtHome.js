@@ -7,7 +7,7 @@ const AdminGovtHome = () => {
     <div className="admin-govt-home">
       <header className="header">
         <h1>Government Admin Dashboard</h1>
-        <Link to="/govt/assign-admin-head" className="assign-button">Assign Admin Head</Link>
+        <Link to="/govt/assign-admin-head" className="top-right-button">Assign Admin Head</Link>
       </header>
       <main className="content">
         <h2>Welcome to the Government Admin Dashboard</h2>
@@ -35,6 +35,10 @@ const AdminGovtHome = () => {
           <div className="feature-card">
             <p>Get in touch with municipality administrators for any assistance or queries.</p>
             <Link to="/contact-us" className="feature-button">Administrators Details</Link>
+          </div>
+          <div className="feature-card">
+            <p>View and approve fund requests from Admin Head.</p>
+            <Link to="/govt/view-fund-requests" className="feature-button">View Fund Requests</Link>
           </div>
         </div>
       </main>

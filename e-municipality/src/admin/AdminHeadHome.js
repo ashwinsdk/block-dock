@@ -47,6 +47,12 @@ const AdminHeadHome = () => {
             description="Monitor tax collection details and overall revenue." 
             onClick={() => navigate('/view-taxes')} 
           />
+          <FeatureCard 
+            icon={<FaMoneyCheckAlt />}
+            title="Request Funds" 
+            description="Submit a request for additional funds." 
+            onClick={() => navigate('/request-funds')} 
+          />
         </div>
       </main>
 
