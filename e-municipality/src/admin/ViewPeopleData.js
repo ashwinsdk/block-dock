@@ -1,23 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ethers } from 'ethers';
+//import './MyGrievances.css';
 import './ViewPeopleData.css';
+const transfer = require("./contracts/GrievanceSystem.json");
+const contractABI = transfer.abi;
+//import contractABI from './contracts/GrievanceSystem.json'; // Import the ABI
+const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+//Sepolia
+//const contractAddress = "0x26b01E3AD38E32645f308d11C81575D03f126da9";
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
+const contract = new ethers.Contract(contractAddress, contractABI, signer);
+function MyGrievances() {
+  const [grievances, setGrievances] = useState([]);
+  const navigate = useNavigate();
 
-const ViewPeopleDataPage = () => {
-  // Sample state for people data
-  const [peopleData, setPeopleData] = useState([]);
 
-  // Simulating an API call to fetch people data
   useEffect(() => {
-    // Sample data for demonstration
-    const fetchPeopleData = () => {
-      setPeopleData([
-        { id: 1, name: 'John Doe', email: 'john@example.com', phone: '123-456-7890', taxPaid: 5000, grievances: 2 },
-        { id: 2, name: 'Jane Smith', email: 'jane@example.com', phone: '987-654-3210', taxPaid: 3000, grievances: 1 },
-        { id: 3, name: 'George Lee', email: 'george@example.com', phone: '456-789-1230', taxPaid: 4000, grievances: 0 },
-      ]);
+    const fetchGrievances = async () => {
+      if (!window.ethereum) {
+        alert("Please install MetaMask!");
+        return;
+      }
+      try {
+        // Assuming your contract has a method `getGrievances` that fetches grievances
+        const grievancesData = await contract.viewAllUsers(); // Adjust based on actual function
+        setGrievances(grievancesData);
+      } catch (error) {
+        console.error("Error fetching grievances:", error);
+        alert("An error occurred while fetching grievances.");
+      }
     };
 
-    fetchPeopleData();
+    fetchGrievances();
   }, []);
+
+  const handleBack = () => {
+    navigate('/');
+  };
 
   return (
     <div className="people-data-container">
@@ -26,28 +47,34 @@ const ViewPeopleDataPage = () => {
       </header>
 
       <main className="content">
-        <h2>View People Data</h2>
+        <h2>People Data</h2>
         <div className="people-data-list">
           <table className="people-data-table">
             <thead>
               <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Phone Number</th>
-                <th>Tax Paid</th>
-                <th>Number of Grievances</th>
+                <th>DOB</th>
+                <th>Mobile</th>
+                {/* <th>Wallet Address</th> */}
               </tr>
             </thead>
             <tbody>
-              {peopleData.map((person) => (
-                <tr key={person.id}>
-                  <td>{person.name}</td>
-                  <td>{person.email}</td>
-                  <td>{person.phone}</td>
-                  <td>{person.taxPaid}</td>
-                  <td>{person.grievances}</td>
+              {grievances.length > 0 ? (
+                grievances.map((grievance, index) => (
+                  <tr key={index}>
+                    <td>{grievance.name || 'N/A'}</td>
+                    <td>{grievance.email || 'N/A'}</td>
+                    <td>{grievance.dob || 'N/A'}</td>
+                    <td>{grievance.mobile || 'N/A'}</td>
+                    {/* <td>{grievance.useraddress || 'N/A'}</td> */}
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4">No grievances found.</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
@@ -58,6 +85,6 @@ const ViewPeopleDataPage = () => {
       </footer>
     </div>
   );
-};
+}
 
-export default ViewPeopleDataPage;
+export default MyGrievances;

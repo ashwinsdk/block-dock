@@ -1,11 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { ethers } from 'ethers';
 import "./UserDashboard.css";
+const transfer = require("./contracts/GrievanceSystem.json");
+const contractABI = transfer.abi;
+//import contractABI from './contracts/GrievanceSystem.json'; // Import the ABI
+const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
+const contract = new ethers.Contract(contractAddress, contractABI, signer);
+
 
 function UserDashboard() {
+  const location = useLocation();
+  const userName = location.state?.userName || "User";
+  const [userGrievances, setUserGrievances] = useState([]);
+
+  useEffect(() => {
+    const fetchUserGrievances = async () => {
+      if (typeof window.ethereum !== 'undefined') {
+        try {
+          const userAddress = await signer.getAddress();
+
+          const grievances = await contract.viewGrievances();  // Get all grievances
+          const userGrievances = grievances.filter(grievance => grievance.user.toLowerCase() === userAddress.toLowerCase());
+
+          setUserGrievances(userGrievances);
+        } catch (error) {
+          console.error('Error fetching grievances:', error);
+        }
+      }
+    };
+
+    fetchUserGrievances();
+  }, []);
+
   return (
     <div className="layout">
-      
+
       <header className="navbar">
         <div className="navbar-title">E-Municipality</div>
         <div className="navbar-links">
@@ -15,9 +47,9 @@ function UserDashboard() {
       </header>
       <br></br><br></br><br></br>
 
-      <h2> Welcome to E-Muncipality,User</h2>
+      <h2> Welcome to E-Muncipality,{userName}!</h2>
       <div className="dashboard">
-        
+
         <div className="dashboard-buttons">
           <div className="dashboard-card">
             <h3>File Grievance</h3>
@@ -62,6 +94,17 @@ function UserDashboard() {
           <div className="dashboard-card">
             <h3>My Grievances</h3>
             <p>View and manage grievances you have submitted.</p>
+            {/* <ul>
+              {userGrievances.length === 0 ? (
+                <li>No grievances filed yet.</li>
+              ) : (
+                userGrievances.map((grievance, index) => (
+                  <li key={index}>
+                    {grievance.name} - Status: {grievance.status}
+                  </li>
+                ))
+              )}
+            </ul> */}
             <Link to="/my-grievances" className="dashboard-link">
               <button className="dashboard-button">My Grievances</button>
             </Link>

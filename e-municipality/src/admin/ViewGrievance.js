@@ -1,133 +1,111 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ethers } from 'ethers';
 import './ViewGrievance.css';
 
-const ViewGrievancePage = () => {
-  const [grievances, setGrievances] = useState([
-    { id: 1, description: 'Road repair needed on 5th Avenue', status: 'Pending', date: '2024-11-01', details: 'Road has been in bad condition for over a month causing traffic and accidents.' },
-    { id: 2, description: 'Overflowing garbage bins in Sector 4', status: 'Pending', date: '2024-11-03', details: 'Garbage bins have not been emptied for over a week leading to an unpleasant smell and health hazards.' },
-    { id: 3, description: 'Street lights not working on Maple Street', status: 'Pending', date: '2024-11-05', details: 'Street lights have been out for two weeks causing safety concerns for residents.' },
-  ]);
+const transfer = require("./contracts/GrievanceSystem.json");
+const contractABI = transfer.abi;
+const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+//Sepolia
+//const contractAddress = "0x26b01E3AD38E32645f308d11C81575D03f126da9";
+const provider = new ethers.BrowserProvider(window.ethereum);
+const signer = await provider.getSigner();
+const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
-  const [selectedGrievance, setSelectedGrievance] = useState(null);
+function MyGrievances() {
+  const [grievances, setGrievances] = useState([]);
+  const navigate = useNavigate();
 
-  const updateGrievanceStatus = (id, status) => {
-    setGrievances(grievances.map(grievance =>
-      grievance.id === id ? { ...grievance, status } : grievance
-    ));
+  useEffect(() => {
+    const fetchGrievances = async () => {
+      if (!window.ethereum) {
+        alert("Please install MetaMask!");
+        return;
+      }
+      try {
+        const grievancesData = await contract.viewGrievances(); // Fetch grievances
+        setGrievances(grievancesData);
+      } catch (error) {
+        console.error("Error fetching grievances:", error);
+        alert("An error occurred while fetching grievances.");
+      }
+    };
+
+    fetchGrievances();
+  }, []);
+
+  const handleEditStatus = async (grievanceIndex, newStatus) => {
+    try {
+      // Call the smart contract method to edit grievance status
+      const tx = await contract.viewAndEditGrievances(grievanceIndex, newStatus);
+      await tx.wait(); // Wait for the transaction to be mined
+
+      alert(`Grievance status updated to ${newStatus}`);
+      // Update grievances state locally to reflect the new status
+      setGrievances((prevGrievances) =>
+        prevGrievances.map((g, index) =>
+          index === grievanceIndex ? { ...g, status: newStatus } : g
+        )
+      );
+    } catch (error) {
+      console.error("Error editing grievance status:", error);
+      alert("An error occurred while updating grievance status.");
+    }
   };
 
-  const viewDetails = (grievance) => {
-    setSelectedGrievance(grievance);
+  const handleBack = () => {
+    navigate('/');
   };
-
-  const closeDetails = () => {
-    setSelectedGrievance(null);
-  };
-
-  const pendingGrievances = grievances.filter(grievance => grievance.status === 'Pending');
-  const acceptedGrievances = grievances.filter(grievance => grievance.status === 'Accepted');
-  const rejectedGrievances = grievances.filter(grievance => grievance.status === 'Rejected');
 
   return (
-    <div className="view-grievance-container">
+    <div className="people-data-container">
       <header className="header">
         <h1>E-Municipality</h1>
       </header>
 
       <main className="content">
-        <h2>Grievances</h2>
-
-        <div className="grievances-section">
-          <h3>Pending Grievances</h3>
-          <table className="view-grievance-table">
+        <h2>Edit Grievances</h2>
+        <div className="people-data-list">
+          <table className="people-data-table">
             <thead>
               <tr>
-                <th>Grievance ID</th>
-                <th>Description</th>
+                <th>Name</th>
+                <th>Details</th>
                 <th>Status</th>
-                <th>Date</th>
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {pendingGrievances.map(grievance => (
-                <tr key={grievance.id}>
-                  <td>{grievance.id}</td>
-                  <td>{grievance.description}</td>
-                  <td className={`status ${grievance.status.toLowerCase()}`}>{grievance.status}</td>
-                  <td>{grievance.date}</td>
-                  <td>
-                    <button onClick={() => viewDetails(grievance)}>View Details</button>
-                    <button onClick={() => updateGrievanceStatus(grievance.id, 'Accepted')}>Accept</button>
-                    <button onClick={() => updateGrievanceStatus(grievance.id, 'Rejected')}>Reject</button>
-                  </td>
+              {grievances.length > 0 ? (
+                grievances.map((grievance, index) => (
+                  <tr key={index}>
+                    <td>{grievance.name || 'N/A'}</td>
+                    <td>{grievance.details || 'N/A'}</td>
+                    <td>{grievance.status || 'N/A'}</td>
+                    <td>
+                      <button
+                        onClick={() => handleEditStatus(index, 'ACCEPTED')}
+                        className="btn-accept"
+                      >
+                        Accept
+                      </button>
+                      <button
+                        onClick={() => handleEditStatus(index, 'REJECTED')}
+                        className="btn-reject"
+                      >
+                        Reject
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="4">No grievances found.</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
-
-        <div className="grievances-section">
-          <h3>Accepted Grievances</h3>
-          <table className="view-grievance-table">
-            <thead>
-              <tr>
-                <th>Grievance ID</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {acceptedGrievances.map(grievance => (
-                <tr key={grievance.id}>
-                  <td>{grievance.id}</td>
-                  <td>{grievance.description}</td>
-                  <td className={`status ${grievance.status.toLowerCase()}`}>{grievance.status}</td>
-                  <td>{grievance.date}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div className="grievances-section">
-          <h3>Rejected Grievances</h3>
-          <table className="view-grievance-table">
-            <thead>
-              <tr>
-                <th>Grievance ID</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rejectedGrievances.map(grievance => (
-                <tr key={grievance.id}>
-                  <td>{grievance.id}</td>
-                  <td>{grievance.description}</td>
-                  <td className={`status ${grievance.status.toLowerCase()}`}>{grievance.status}</td>
-                  <td>{grievance.date}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        {selectedGrievance && (
-          <div className="modal">
-            <div className="modal-content">
-              <span className="close" onClick={closeDetails}>&times;</span>
-              <h2>Grievance Details</h2>
-              <p><strong>ID:</strong> {selectedGrievance.id}</p>
-              <p><strong>Description:</strong> {selectedGrievance.description}</p>
-              <p><strong>Status:</strong> {selectedGrievance.status}</p>
-              <p><strong>Date:</strong> {selectedGrievance.date}</p>
-              <p><strong>Details:</strong> {selectedGrievance.details}</p>
-            </div>
-          </div>
-        )}
       </main>
 
       <footer className="footer">
@@ -135,6 +113,6 @@ const ViewGrievancePage = () => {
       </footer>
     </div>
   );
-};
+}
 
-export default ViewGrievancePage;
+export default MyGrievances;
