@@ -1,0 +1,67 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.people-data-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header, .footer {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  background-color: #2c3e50;
+}
+
+.header h1, .footer p {
+  margin: 0;
+  color: #fff;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.people-data-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.people-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.people-data-table th {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+.people-data-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.people-data-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.people-data-table tr:hover {
+  background-color: #ddd;
+}

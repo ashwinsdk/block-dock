@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 import { ethers } from 'ethers';
 import { useNavigate } from 'react-router-dom';
 import contractABI from './contracts/GrievanceSystem.json'; // Import the ABI
-const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
-//Sepolia
-//const contractAddress = "0x26b01E3AD38E32645f308d11C81575D03f126da9";
+//const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+//Sepolia 
+const contractAddress = "0x26b01E3AD38E32645f308d11C81575D03f126da9";
+//const contractAddress = "0xb93E6A9CA2C59267cBfb484Ac0F24440B19574ca";
 
 const Login = () => {
   const [userAddress, setUserAddress] = useState('');
@@ -37,17 +38,17 @@ const Login = () => {
         const fetchedAdminHead = await contract.adminHead();
         const fetchedAdminGovt = await contract.adminGovt();
         console.log(fetchedAdminHead, fetchedAdminGovt);
-        // if (address === fetchedAdminGovt) {
-        //   // Redirect to AdminGovt home if the address matches adminGovt
-        //   alert('Welcome, AdminGovt!');
-        //   navigate('/admin-govt-home');
-        //   return;
-        // } else if (address === fetchedAdminHead) {
-        //   // Redirect to AdminHead home if the address matches adminHead
-        //   alert('Welcome, AdminHead!');
-        //   navigate('/admin-head-home');
-        //   return;
-        // }
+        if (address === fetchedAdminGovt) {
+          // Redirect to AdminGovt home if the address matches adminGovt
+          alert('Welcome, AdminGovt!');
+          navigate('/admin-govt-home');
+          return;
+        } else if (address === fetchedAdminHead) {
+          // Redirect to AdminHead home if the address matches adminHead
+          alert('Welcome, AdminHead!');
+          navigate('/admin-head-home');
+          return;
+        }
 
         // Check if the user is registered
         const user = await contract.users(address);

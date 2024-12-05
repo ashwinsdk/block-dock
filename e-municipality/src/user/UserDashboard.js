@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { ethers } from 'ethers';
-import "./UserDashboard.css";
+import "./css/UserDashboard.css";
 const transfer = require("./contracts/GrievanceSystem.json");
 const contractABI = transfer.abi;
 //import contractABI from './contracts/GrievanceSystem.json'; // Import the ABI
-const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+//const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
+//Sepolia 
+const contractAddress = "0x26b01E3AD38E32645f308d11C81575D03f126da9";
+//const contractAddress = "0xb93E6A9CA2C59267cBfb484Ac0F24440B19574ca";
 const provider = new ethers.BrowserProvider(window.ethereum);
 const signer = await provider.getSigner();
 const contract = new ethers.Contract(contractAddress, contractABI, signer);
@@ -16,24 +19,24 @@ function UserDashboard() {
   const userName = location.state?.userName || "User";
   const [userGrievances, setUserGrievances] = useState([]);
 
-  useEffect(() => {
-    const fetchUserGrievances = async () => {
-      if (typeof window.ethereum !== 'undefined') {
-        try {
-          const userAddress = await signer.getAddress();
+  // useEffect(() => {
+  //   const fetchUserGrievances = async () => {
+  //     if (typeof window.ethereum !== 'undefined') {
+  //       try {
+  //         const userAddress = await signer.getAddress();
 
-          const grievances = await contract.viewGrievances();  // Get all grievances
-          const userGrievances = grievances.filter(grievance => grievance.user.toLowerCase() === userAddress.toLowerCase());
+  //         const grievances = await contract.viewGrievances();  // Get all grievances
+  //         const userGrievances = grievances.filter(grievance => grievance.user.toLowerCase() === userAddress.toLowerCase());
 
-          setUserGrievances(userGrievances);
-        } catch (error) {
-          console.error('Error fetching grievances:', error);
-        }
-      }
-    };
+  //         setUserGrievances(userGrievances);
+  //       } catch (error) {
+  //         console.error('Error fetching grievances:', error);
+  //       }
+  //     }
+  //   };
 
-    fetchUserGrievances();
-  }, []);
+  //   fetchUserGrievances();
+  // }, []);
 
   return (
     <div className="layout">
@@ -67,24 +70,16 @@ function UserDashboard() {
             </Link>
           </div>
 
-          <div className="dashboard-card">
+          {/* <div className="dashboard-card">
             <h3>Government Funds</h3>
             <p>View details of funds received from the government.</p>
             <Link to="/government-funds" className="dashboard-link">
               <button className="dashboard-button">Government Funds</button>
             </Link>
-          </div>
+          </div> */}
 
           <div className="dashboard-card">
-            <h3>Tax Funds</h3>
-            <p>Access information about collected taxes and fund usage.</p>
-            <Link to="/tax-funds" className="dashboard-link">
-              <button className="dashboard-button">Tax Funds</button>
-            </Link>
-          </div>
-
-          <div className="dashboard-card">
-            <h3>Contact Us</h3>
+            <h3>Admin Details</h3>
             <p>Reach out to us for any queries or assistance.</p>
             <Link to="/contact-us" className="dashboard-link">
               <button className="dashboard-button">Contact Us</button>

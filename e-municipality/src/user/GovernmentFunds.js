@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./GovernmentFunds.css";
+import "./css/GovernmentFunds.css";
 
 function GovernmentFunds() {
     const funds = [
@@ -10,7 +10,7 @@ function GovernmentFunds() {
 
     return (
         <div className="layout">
-           
+
             <header className="navbar">
                 <div className="navbar-title">E-Municipality</div>
                 <div className="navbar-links">
@@ -18,7 +18,7 @@ function GovernmentFunds() {
                 </div>
             </header>
 
-            
+
             <div className="funds-container">
                 <h2>Funds Received from Government</h2>
                 <table className="funds-table">
@@ -41,7 +41,7 @@ function GovernmentFunds() {
                 </table>
             </div>
 
-            
+
             <footer className="footer">
                 <p>&copy; 2024 E-Municipality. All rights reserved.</p>
             </footer>

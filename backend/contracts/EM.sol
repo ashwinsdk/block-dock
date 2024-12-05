@@ -228,12 +228,7 @@ contract GrievanceSystem {
     }
 
     // View all fund requests
-    function viewFundRequests()
-        public
-        view
-        onlyAdminGovt
-        returns (FundRequest[] memory)
-    {
+    function viewFundRequests() public view returns (FundRequest[] memory) {
         return fundRequests;
     }
 
@@ -265,22 +260,7 @@ contract GrievanceSystem {
     }
 
     // View all projects (AdminGovt)
-    function viewAllProjects()
-        public
-        view
-        onlyAdminGovt
-        returns (Project[] memory)
-    {
+    function viewAllProjects() public view returns (Project[] memory) {
         return projects;
-    }
-
-    // View all users (AdminGovt)
-    function viewAllUsersAdminGovt()
-        public
-        view
-        onlyAdminGovt
-        returns (User[] memory)
-    {
-        return viewAllUsers(); // Reuse viewAllUsers function
     }
 }

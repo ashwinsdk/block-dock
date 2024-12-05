@@ -14,7 +14,7 @@ import MyGrievances from './user/MyGrievances';
 import AdminHeadHome from './admin/AdminHeadHome';
 import FundAllocation from './admin/FundAllocation';
 import ReceiveFund from './admin/ReceiveFund';
-import ViewGrievance from './admin/ViewGrievance'; 
+import ViewGrievance from './admin/ViewGrievance';
 import ViewPeopleData from './admin/ViewPeopleData';
 import ViewTaxes from './admin/ViewTaxes';
 
@@ -48,7 +48,6 @@ function App() {
           <Route path="/receive-fund" element={<ReceiveFund />} />
           <Route path="/view-grievance" element={<ViewGrievance />} />
           <Route path="/view-people-data" element={<ViewPeopleData />} />
-          <Route path="/view-taxes" element={<ViewTaxes />} />
 
           {/* Government Routes */}
           <Route path="/admin-govt-home" element={<AdminGovtHome />} />

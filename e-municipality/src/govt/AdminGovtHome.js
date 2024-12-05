@@ -1,13 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './AdminGovtHome.css';
+import './css/AdminGovtHome.css';
 
 const AdminGovtHome = () => {
   return (
     <div className="admin-govt-home">
       <header className="header">
         <h1>Government Admin Dashboard</h1>
-        <Link to="/govt/assign-admin-head" className="assign-button">Assign Admin Head</Link>
       </header>
       <main className="content">
         <h2>Welcome to the Government Admin Dashboard</h2>
@@ -18,15 +17,15 @@ const AdminGovtHome = () => {
           </div>
           <div className="feature-card">
             <p>Check the status of grievances submitted by the public and address them promptly.</p>
-            <Link to="/govt/view-grievance-status" className="feature-button">View Grievance Status</Link>
+            <Link to="/my-grievances" className="feature-button">View Grievance Status</Link>
           </div>
           <div className="feature-card">
             <p>Access and review the data of people within your jurisdiction.</p>
             <Link to="/view-people-data" className="feature-button">View People Data</Link>
           </div>
           <div className="feature-card">
-            <p>Manage and view tax-related information for effective governance.</p>
-            <Link to="/view-taxes" className="feature-button">View Taxes</Link>
+            <p>Assign Admin Head  by entering the wallet address of the new admin head.</p>
+            <Link to="/govt/assign-admin-head" className="feature-button">Assign</Link>
           </div>
           <div className="feature-card">
             <p>Monitor the progress of ongoing government projects.</p>
