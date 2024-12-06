@@ -1,24 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Home.css";
+import "./css/Home.css";
 
 function Home() {
   return (
     <div className="App">
-      
+
       <header className="navbar">
         <div className="navbar-links"></div>
         <div className="navbar-title">E-Municipality</div>
         <div className="navbar-links">
-          
+
           <Link to="/login" className="navbar-link">
             Connect
           </Link>
-          
+
         </div>
       </header>
 
-      
+
       <section id="who-we-are">
         <h2>Who We Are</h2>
         <p>
@@ -29,7 +29,7 @@ function Home() {
         </p>
       </section>
 
-            <section id="services">
+      <section id="services">
         <h2>Services We Provide</h2>
         <div className="services-container">
           <div className="service-item">
@@ -59,7 +59,7 @@ function Home() {
         </div>
       </section>
 
-      
+
       <footer className="footer">
         <p>&copy; 2024 E-Municipality. All rights reserved.</p>
       </footer>

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './ViewTaxes.css';
+import './css/ViewTaxes.css';
 
 const ViewTaxesPage = () => {
   // Sample state for tax data

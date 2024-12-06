@@ -14,16 +14,14 @@ import MyGrievances from './user/MyGrievances';
 import AdminHeadHome from './admin/AdminHeadHome';
 import FundAllocation from './admin/FundAllocation';
 import ReceiveFund from './admin/ReceiveFund';
-import ViewGrievance from './admin/ViewGrievance'; 
+import ViewGrievance from './admin/ViewGrievance';
 import ViewPeopleData from './admin/ViewPeopleData';
 import ViewTaxes from './admin/ViewTaxes';
-import RequestFunds from './admin/RequestFunds'; // Importing the new page
 
 import AdminGovtHome from './govt/AdminGovtHome';
 import SendFunds from './govt/SendFunds';
 import ViewGrievanceStatus from './govt/ViewGrievanceStatus';
 import AssignAdminHead from './govt/AssignAdminHead';
-import ViewFundRequests from './govt/ViewFundRequests';
 
 import './App.css';
 
@@ -50,15 +48,12 @@ function App() {
           <Route path="/receive-fund" element={<ReceiveFund />} />
           <Route path="/view-grievance" element={<ViewGrievance />} />
           <Route path="/view-people-data" element={<ViewPeopleData />} />
-          <Route path="/view-taxes" element={<ViewTaxes />} />
-          <Route path="/request-funds" element={<RequestFunds />} /> {/* New route for Request Funds */}
 
           {/* Government Routes */}
           <Route path="/admin-govt-home" element={<AdminGovtHome />} />
           <Route path="/send-funds" element={<SendFunds />} />
           <Route path="/govt/view-grievance-status" element={<ViewGrievanceStatus />} />
           <Route path="/govt/assign-admin-head" element={<AssignAdminHead />} />
-          <Route path="/govt/view-fund-requests" element={<ViewFundRequests />} />
 
           {/* Placeholder routes for features not implemented yet */}
           <Route path="/view-fund-allocation" element={<div>Fund Allocation Placeholder</div>} />

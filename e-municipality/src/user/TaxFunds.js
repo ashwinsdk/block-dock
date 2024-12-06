@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./GovernmentFunds.css";
+import "./css/GovernmentFunds.css";
 
 function TaxFunds() {
   const taxFunds = [
@@ -10,7 +10,7 @@ function TaxFunds() {
 
   const handlePayTax = (fundId) => {
     alert(`Pay Tax button clicked for Fund ID: ${fundId}`);
-    
+
   };
 
   return (
