@@ -25,11 +25,11 @@ function ContactUs() {
 
       {/* <header className="navbar">
         <div className="navbar-links"></div>
-        <div className="navbar-title">E-Municipality</div>
+        <div className="navbar-title">Block-Dock</div>
 
       </header> */}
       <header className="header">
-        <h1>E-Municipality</h1>
+        <h1>Block-Dock</h1>
       </header><br /><br />
 
 

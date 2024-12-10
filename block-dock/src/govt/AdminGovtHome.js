@@ -6,7 +6,7 @@ const AdminGovtHome = () => {
   return (
     <div className="admin-govt-home">
       <header className="header">
-        <h1>E-Municipality</h1>
+        <h1>Block-Dock</h1>
       </header>
       <div className="dashboard">
 

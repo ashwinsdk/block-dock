@@ -69,7 +69,7 @@ const Register = () => {
     <div className="layout">
       {/* Header */}
       <header className="navbar">
-        <div className="navbar-title">E-Municipality</div>
+        <div className="navbar-title">Block-Dock</div>
         <div className="navbar-links">
           <Link to="/" className="navbar-link">Home</Link>
         </div>

@@ -46,7 +46,7 @@ function GovernmentFunds() {
     return (
         <div className="people-data-container">
             <header className="header">
-                <h1>E-Municipality</h1>
+                <h1>Block-Dock</h1>
             </header>
 
             <main className="content">

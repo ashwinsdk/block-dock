@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './css/style.css';
 import { ethers } from 'ethers';
 import transfer from './contracts/GrievanceSystem.json'; // Import the ABI properly
@@ -9,28 +9,27 @@ const contractABI = transfer.abi;
 //const contractAddress = "0x26b01E3AD38E32645f308d11C81575D03f126da9";
 const contractAddress = "0xb93E6A9CA2C59267cBfb484Ac0F24440B19574ca";
 
-function SendFundPage() {
+function ReceiveFundPage() {
+  const [newFund, setNewFund] = useState({ amount: '' });
+  const [balance, setBalance] = useState(0); // To store the balance
   const [receivedFunds, setReceivedFunds] = useState([]);
-  const [balance, setBalance] = useState(0);
 
-  // Fetch balance and received fund requests
+  // Fetch balance and set contract interaction
   useEffect(() => {
-    const fetchContractData = async () => {
+    const fetchBalance = async () => {
       if (!window.ethereum) {
         alert('Please install MetaMask!');
         return;
       }
-
       try {
         const provider = new ethers.BrowserProvider(window.ethereum);
         const signer = await provider.getSigner();
         const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
-        // Fetch balance (raw token form, e.g., Wei or token's base unit)
-        const balance = await contract.viewBalanceAdminGovt();
-        setBalance(balance.toString()); // Display the balance in raw token value
+        // Fetch balance from the contract
+        const balance = await contract.viewBalanceAdminHead(); // Replace with the actual function name in the contract
+        setBalance(balance.toString()); // Display balance in raw token form (Wei or similar unit)
 
-        // Fetch the received fund requests (raw token values)
         const fundsData = await contract.viewFundRequests();
         const parsedFunds = fundsData.map((fund, index) => ({
           id: index + 1,
@@ -40,60 +39,83 @@ function SendFundPage() {
         }));
 
         setReceivedFunds(parsedFunds);
+
+
       } catch (error) {
-        console.error('Error fetching contract data:', error);
-        alert('An error occurred while fetching contract data.');
+        console.error('Error fetching balance:', error);
+        alert('An error occurred while fetching balance.');
       }
     };
 
-    fetchContractData();
+    fetchBalance();
   }, []);
 
-  // Handle payment
-  const handlePay = async (fundId) => {
+  // Handle form input changes
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewFund({ ...newFund, [name]: value });
+  };
+
+  // Handle form submission for requesting funds
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (!window.ethereum) {
       alert('Please install MetaMask!');
       return;
     }
-
     try {
       const provider = new ethers.BrowserProvider(window.ethereum);
       const signer = await provider.getSigner();
       const contract = new ethers.Contract(contractAddress, contractABI, signer);
 
-      // Find the fund to be paid
-      const selectedFund = receivedFunds.find(fund => fund.id === fundId);
-      if (!selectedFund) {
-        alert('Fund not found!');
-        return;
-      }
-
-      // Send funds using the contract's method, passing the fund ID
-      console.log(selectedFund.id);
-      const tx = await contract.sendTokensToAdminHead(selectedFund.id - 1); // Adjust function name accordingly
+      // Convert amount to Wei if needed, or send it directly if it's in the contract's base unit
+      // const amountInWei = ethers.parseEther(newFund.amount); // You can skip this if the contract uses raw token value
+      // const tx = await contract.requestFunds(amountInWei); // Adjust based on your contract function
+      const tx = await contract.requestFunds(newFund.amount); // Send token value directly
       await tx.wait();
-      alert('Funds sent successfully!');
+      alert('Fund request submitted successfully!');
 
-      // Re-fetch contract data to reflect updated state (balance, fund requests)
-      setTimeout(() => window.location.reload(), 1000);
+      // Reset form
+      setNewFund({ amount: '' });
+
+      // Re-fetch balance after transaction
+      const updatedBalance = await contract.viewBalanceAdminHead();
+      setBalance(updatedBalance.toString());
+
+
+
     } catch (error) {
-      console.error('Error sending funds:', error);
-      alert('An error occurred while sending funds.');
+      console.error('Error requesting funds:', error);
+      alert('An error occurred while submitting the fund request.');
     }
   };
 
   return (
     <div className="receive-funds-container">
       <header className="header">
-        <h1>E-Municipality</h1>
+        <h1>Block-Dock</h1>
       </header>
 
       <div className="financial-summary">
-        <p>Balance: {balance.toString()} RS</p> {/* Display balance in Ether */}
+        <p>Balance: {balance}</p> {/* Display raw balance */}
       </div>
 
       <main className="content">
-        <h2 className='title-h2'>Received Fund Requests</h2>
+        <h2>Request Funds</h2>
+
+        {/* Form to request new funds */}
+        <form onSubmit={handleSubmit} className="add-fund-form">
+          <input
+            type="text"
+            name="amount"
+            value={newFund.amount}
+            onChange={handleChange}
+            placeholder="Amount (in Tokens)"
+            required
+          />
+          <button type="submit">Request Fund</button>
+        </form>
+        <h2>Received Fund Requests</h2>
 
         {/* Table to display received funds */}
         <div>
@@ -101,9 +123,8 @@ function SendFundPage() {
             <thead>
               <tr>
                 {/* <th>Wallet</th> */}
-                <th>Amount (in Tokens)</th> {/* Display amount in Ether */}
+                <th>Request Amount (ETH)</th> {/* Display amount in Ether */}
                 <th>Status</th>
-                <th>Pay</th>
               </tr>
             </thead>
             <tbody>
@@ -113,9 +134,6 @@ function SendFundPage() {
                     {/* <td>{fund.source}</td> */}
                     <td>{fund.amount}</td> {/* Display amount in Ether */}
                     <td>{fund.status}</td>
-                    <td>
-                      <button className='pay-button' onClick={() => handlePay(fund.id)}>Pay</button>
-                    </td>
                   </tr>
                 ))
               ) : (
@@ -127,9 +145,8 @@ function SendFundPage() {
           </table>
         </div>
       </main>
-
     </div>
   );
 }
 
-export default SendFundPage;
+export default ReceiveFundPage;

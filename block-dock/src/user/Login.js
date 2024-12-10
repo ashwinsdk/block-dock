@@ -70,7 +70,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <header className="navbar">
-        <div className="navbar-title">E-Municipality</div>
+        <div className="navbar-title">Block-Dock</div>
         <div className="navbar-links">
           <Link to="/" className="navbar-link">
             Home

@@ -68,7 +68,7 @@ const FileGrievances = () => {
         <div>
             <header className="navbar">
                 <div className="navbar-links"></div>
-                <div className="navbar-title">E-Municipality</div>
+                <div className="navbar-title">Block-Dock</div>
             </header>
             <div className="register-container">
                 <div className="register">
