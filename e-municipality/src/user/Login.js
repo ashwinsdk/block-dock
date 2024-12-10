@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import "./css/Login.css";
+import "./css/style.css";
 import { Link } from "react-router-dom";
 import { ethers } from 'ethers';
 import { useNavigate } from 'react-router-dom';
-import contractABI from './contracts/GrievanceSystem.json'; // Import the ABI
+import contractABI from './contracts/GrievanceSystem.json';
+
 //const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
 //Sepolia 
 const contractAddress = "0x26b01E3AD38E32645f308d11C81575D03f126da9";
@@ -14,13 +15,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const [userType, setUserType] = useState('user');
-  const [name, setName] = useState('');
 
-  // Function to handle login
-  const adminGovt = '0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266'; // AdminGovt Address
-  //const adminHead = '0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC'; // AdminGovt Address
-  //const [adminHead, setAdminHead] = useState(''); // Dynamically set adminHead
 
   const handleLogin = async () => {
     setLoading(true);
@@ -88,13 +83,13 @@ const Login = () => {
 
         <div className="button-group">
           <button onClick={handleLogin}>Connect</button>
-        </div>
+        </div><br />
 
-        {userType === 'user' && (
-          <p>
-            New user? <Link to="/register">Register here</Link>
-          </p>
-        )}
+
+        <p>
+          New user? <Link className="register-link" to="/register">Register here</Link>
+        </p>
+
       </div>
 
     </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
 //import './MyGrievances.css';
-import './css/ViewPeopleData.css';
+import './css/style.css';
 const transfer = require("./contracts/GrievanceSystem.json");
 const contractABI = transfer.abi;
 //import contractABI from './contracts/GrievanceSystem.json'; // Import the ABI
@@ -82,9 +82,6 @@ function MyGrievances() {
         </div>
       </main>
 
-      <footer className="footer">
-        <p>© 2024 E-Municipality. All rights reserved.</p>
-      </footer>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ethers } from 'ethers';
-import './css/ViewGrievance.css';
+import './css/style.css';
 
 const transfer = require("./contracts/GrievanceSystem.json");
 const contractABI = transfer.abi;
@@ -110,9 +110,6 @@ function MyGrievances() {
         </div>
       </main>
 
-      <footer className="footer">
-        <p>© 2024 E-Municipality. All rights reserved.</p>
-      </footer>
     </div>
   );
 }

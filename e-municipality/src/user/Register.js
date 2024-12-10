@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import "./css/Register.css";
+import "./css/style.css";
 import { Link } from "react-router-dom";
 import { ethers } from 'ethers';
-import { useNavigate } from 'react-router-dom';
-import contractABI from './contracts/GrievanceSystem.json'; // Import the ABI
+import contractABI from './contracts/GrievanceSystem.json';
+
 //const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
 //Sepolia 
 const contractAddress = "0x26b01E3AD38E32645f308d11C81575D03f126da9";
@@ -65,37 +65,6 @@ const Register = () => {
   };
 
 
-  // return (
-  //   <div>
-  //     <h2>Register</h2>
-  //     <input
-  //       type="text"
-  //       placeholder="Name"
-  //       value={name}
-  //       onChange={(e) => setName(e.target.value)}
-  //     />
-  //     <input
-  //       type="email"
-  //       placeholder="Email"
-  //       value={email}
-  //       onChange={(e) => setEmail(e.target.value)}
-  //     />
-  //     <input
-  //       type="text"
-  //       placeholder="Date of Birth"
-  //       value={dob}
-  //       onChange={(e) => setDob(e.target.value)}
-  //     />
-  //     <input
-  //       type="text"
-  //       placeholder="Mobile"
-  //       value={mobile}
-  //       onChange={(e) => setMobile(e.target.value)}
-  //     />
-  //     <button onClick={registerUser}>Register</button>
-  //   </div>
-  // );
-
   return (
     <div className="layout">
       {/* Header */}
@@ -142,18 +111,13 @@ const Register = () => {
 
           <div className="button-group">
             <button onClick={registerUser}>Connect</button>
-          </div>
+          </div><br />
           <p>
-            Already have an account? <a href="/login">Login here</a>
+            Already have an account? <a className="register-link" href="/login">Login here</a>
           </p>
         </div>
 
       </div>
-
-      {/* Footer */}
-      <footer className="footer">
-        <p>&copy; 2024 E-Municipality. All rights reserved.</p>
-      </footer>
     </div>
   );
 

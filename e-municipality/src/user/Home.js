@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./css/Home.css";
+import "./css/style.css";
 
 function Home() {
   return (
@@ -17,7 +17,6 @@ function Home() {
 
         </div>
       </header>
-
 
       <section id="who-we-are">
         <h2>Who We Are</h2>
@@ -40,9 +39,9 @@ function Home() {
           </div>
           <div className="service-item">
             <div className="service-circle">
-              <span>Tax Allocation</span>
+              <span>Government Funds</span>
             </div>
-            <p>View taxes collected and ensure transparency in tax usage.</p>
+            <p>View Govt funds sent and received by AmdinGovt and AdminHead.</p>
           </div>
           <div className="service-item">
             <div className="service-circle">
@@ -60,9 +59,6 @@ function Home() {
       </section>
 
 
-      <footer className="footer">
-        <p>&copy; 2024 E-Municipality. All rights reserved.</p>
-      </footer>
     </div>
   );
 }

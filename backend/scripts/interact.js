@@ -16,7 +16,7 @@ async function main() {
     const contract = new ethers.Contract(contractAddress, contractJSON.abi, signer);
 
     try {
-        const balance = await contract.viewAllProjects();
+        const balance = await contract.viewBalanceAdminGovt();
         console.log("AdminGovt Balance:", balance.toString());
     } catch (error) {
         console.error("Error calling contract function:", error);

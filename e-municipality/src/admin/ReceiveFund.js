@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './css/ReceiveFund.css';
+import './css/style.css';
 import { ethers } from 'ethers';
 import transfer from './contracts/GrievanceSystem.json'; // Import the ABI properly
 
@@ -145,10 +145,6 @@ function ReceiveFundPage() {
           </table>
         </div>
       </main>
-
-      <footer className="footer">
-        <p>© 2024 E-Municipality. All rights reserved.</p>
-      </footer>
     </div>
   );
 }

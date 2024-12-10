@@ -1,6 +1,6 @@
 const { ethers } = require('ethers');
 require('dotenv').config();
-const fs = require('fs');
+const signer = require('fs');
 const path = require('path');
 
 async function main() {

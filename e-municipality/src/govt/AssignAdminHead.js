@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './css/AssignAdminHead.css';
+import './css/style.css';
 import { ethers } from "ethers";
 import { useNavigate } from 'react-router-dom';
 
@@ -74,38 +74,40 @@ const AssignAdminHead = () => {
   return (
     <div className="assign-admin-head">
       <header className="header">
-        <h1>Assign Admin Head</h1>
+        <h1>E-Municipality</h1>
       </header>
-      <main className="main-content">
-        <form onSubmit={handleSubmit} className="admin-form">
-          <label>
-            Metamask Address:
-            <input
-              type="text"
-              name="address"
-              value={adminHead.address}
-              onChange={handleChange}
-              required
-            />
-          </label>
 
+      <div className="register-container">
+        <div className="register">
+          <h2>👨🏻‍✈️ Assign Admin Head</h2>
+          <form onSubmit={handleSubmit}>
+            <label>
+              Metamask Address:
+              <input
+                type="text"
+                name="address"
+                value={adminHead.address}
+                onChange={handleChange}
+                required
+              />
+            </label>
+            <label>
+              Position:
+              <input
+                type="text"
+                name="position"
+                value={adminHead.position}
+                readOnly
+              />
+            </label>
 
-          <label>
-            Position:
-            <input
-              type="text"
-              name="position"
-              value={adminHead.position}
-              readOnly
-            />
-          </label>
+            <div className="button-group">
+              <button type="submit" onClick={updateAdminHead}>Assign Admin Head</button>
+            </div>
+          </form>
+        </div>
 
-          <button type="submit" className="submit-button" onClick={updateAdminHead}>Assign Admin Head</button>
-        </form>
-      </main>
-      <footer className="footer">
-        <p>©️ 2024 E-Municipality. All rights reserved.</p>
-      </footer>
+      </div>
     </div>
   );
 };

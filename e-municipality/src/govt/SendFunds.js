@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './css/SendFunds.css';
+import './css/style.css';
 import { ethers } from 'ethers';
 import transfer from './contracts/GrievanceSystem.json'; // Import the ABI properly
 
@@ -89,19 +89,19 @@ function SendFundPage() {
       </header>
 
       <div className="financial-summary">
-        <p>Balance: {balance.toString()} ETH</p> {/* Display balance in Ether */}
+        <p>Balance: {balance.toString()} RS</p> {/* Display balance in Ether */}
       </div>
 
       <main className="content">
-        <h2>Received Fund Requests</h2>
+        <h2 className='title-h2'>Received Fund Requests</h2>
 
         {/* Table to display received funds */}
         <div>
           <table className="receive-funds-table">
             <thead>
               <tr>
-                <th>Wallet</th>
-                <th>Amount (ETH)</th> {/* Display amount in Ether */}
+                {/* <th>Wallet</th> */}
+                <th>Amount (in Tokens)</th> {/* Display amount in Ether */}
                 <th>Status</th>
                 <th>Pay</th>
               </tr>
@@ -110,11 +110,11 @@ function SendFundPage() {
               {receivedFunds.length > 0 ? (
                 receivedFunds.map((fund) => (
                   <tr key={fund.id}>
-                    <td>{fund.source}</td>
+                    {/* <td>{fund.source}</td> */}
                     <td>{fund.amount}</td> {/* Display amount in Ether */}
                     <td>{fund.status}</td>
                     <td>
-                      <button onClick={() => handlePay(fund.id)}>Pay</button>
+                      <button className='pay-button' onClick={() => handlePay(fund.id)}>Pay</button>
                     </td>
                   </tr>
                 ))
@@ -128,9 +128,6 @@ function SendFundPage() {
         </div>
       </main>
 
-      <footer className="footer">
-        <p>© 2024 E-Municipality. All rights reserved.</p>
-      </footer>
     </div>
   );
 }

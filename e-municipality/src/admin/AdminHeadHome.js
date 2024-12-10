@@ -1,53 +1,66 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import './css/AdminHeadHome.css';
-import { FaMoneyCheckAlt, FaClipboardList, FaFileInvoiceDollar, FaDatabase, FaReceipt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import './css/style.css';
 
 const AdminHeadHome = () => {
-  const navigate = useNavigate();
 
   return (
-    <div className="admin-head-home">
+
+    <div className="layout">
+
       <header className="header">
         <h1>E-Municipality</h1>
       </header>
 
-      <main className="content">
-        <h2>Welcome, Municipality Head</h2>
-        <p>Navigate through the dashboard to manage municipal tasks efficiently.</p>
+      <div className="dashboard">
+        <h2> Welcome, Municipality Head</h2><br />
+        <div className="dashboard-buttons">
 
-        <div className="dashboard">
-          <FeatureCard
-            icon={<FaMoneyCheckAlt />}
-            title="Receive Funds"
-            description="Manage incoming funds from government departments."
-            onClick={() => navigate('/receive-fund')}
-          />
-          <FeatureCard
-            icon={<FaClipboardList />}
-            title="View Grievance"
-            description="Review and resolve grievances raised by city residents."
-            onClick={() => navigate('/view-grievance')}
-          />
-          <FeatureCard
-            icon={<FaFileInvoiceDollar />}
-            title="Fund Allocation"
-            description="Allocate funds to specific projects for urban development."
-            onClick={() => navigate('/fund-allocation')}
-          />
-          <FeatureCard
-            icon={<FaDatabase />}
-            title="View People Data"
-            description="Access data of residents and registered entities."
-            onClick={() => navigate('/view-people-data')}
-          />
+          <div className="dashboard-card">
+            <h3>Receive Funds</h3>
+            <p>Manage incoming funds from government departments.</p>
+            <Link to="/receive-fund" className="dashboard-link">
+              <button className="dashboard-button">Receive Funds</button>
+            </Link>
+          </div>
+
+          <div className="dashboard-card">
+            <h3>View Grievance</h3>
+            <p>Review and resolve grievances raised by city residents.</p>
+            <Link to="/view-grievance" className="dashboard-link">
+              <button className="dashboard-button">View Grievance</button>
+            </Link>
+          </div>
+
+          <div className="dashboard-card">
+            <h3>Fund Allocation</h3>
+            <p>Allocate funds to specific projects for urban development.</p>
+            <Link to="/fund-allocation" className="dashboard-link">
+              <button className="dashboard-button">Fund Allocation</button>
+            </Link>
+          </div>
+
+          <div className="dashboard-card">
+            <h3>View People Data</h3>
+            <p>Access data of residents and registered entities.</p>
+            <Link to="/view-people-data" className="dashboard-link">
+              <button className="dashboard-button">View People Data</button>
+            </Link>
+          </div>
+
+          <div className="dashboard-card">
+            <h3>Admin Details</h3>
+            <p>Reach out to us for any queries or assistance.</p>
+            <Link to="/contact-us" className="dashboard-link">
+              <button className="dashboard-button">Details</button>
+            </Link>
+          </div>
+
         </div>
-      </main>
+      </div>
 
-      <footer className="footer">
-        <p>© 2024 E-Municipality. All rights reserved.</p>
-      </footer>
     </div>
+
   );
 };
 

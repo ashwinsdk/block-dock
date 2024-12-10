@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './css/AdminDetails.css';
-import "./css/Login.css";
+import './css/style.css';
+//import "./css/Login.css";
 import { Link } from "react-router-dom";
 import { ethers } from 'ethers';
 import { useNavigate } from 'react-router-dom';
@@ -23,14 +23,17 @@ function ContactUs() {
   return (
     <div>
 
-      <header className="navbar">
+      {/* <header className="navbar">
         <div className="navbar-links"></div>
         <div className="navbar-title">E-Municipality</div>
 
-      </header>
+      </header> */}
+      <header className="header">
+        <h1>E-Municipality</h1>
+      </header><br /><br />
 
 
-      <div className="admin-details" style={{ paddingTop: "4rem" }}><br></br>
+      <div className="admin-details" style={{ paddingTop: "4rem" }}>
         <h2 className="admin-title">Municipality Administration Details</h2>
 
         <div className="admin-section">
@@ -43,7 +46,7 @@ function ContactUs() {
             <strong>Key Actions:</strong> Manages fund allocation and project licensing to ensure transparent fund utilization.
           </p>
           <div className="contact-info">
-            <p><strong>Wallet:</strong> {fetchedAdminHead}</p>
+            <p className='wallet'><strong>Wallet:</strong> {fetchedAdminHead}</p>
             {/* <p><strong>Phone Number:</strong> +1 9876543210</p>
             <p><strong>Municipality ID:</strong> 002</p> */}
           </div>
@@ -59,15 +62,12 @@ function ContactUs() {
             <strong>Key Actions:</strong> Ensures that all allocated funds are transparent and accessible for public viewing.
           </p>
           <div className="contact-info">
-            <p><strong>Wallet:</strong> {fetchedAdminGovt}</p>
+            <p className='wallet'><strong>Wallet:</strong> {fetchedAdminGovt}</p>
           </div>
         </div>
       </div>
 
 
-      <footer className="footer">
-        <p>&copy; 2024 E-Municipality. All rights reserved.</p>
-      </footer>
     </div>
   );
 }

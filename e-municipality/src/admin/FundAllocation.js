@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './css/FundAllocation.css';
+import './css/style.css';
 import { ethers } from 'ethers';
 import transfer from './contracts/GrievanceSystem.json'; // Import the ABI properly
 
@@ -159,7 +159,10 @@ const FundAllocationPage = () => {
                 <tr key={project.id}>
                   <td>{project.name}</td>
                   <td>{project.details}</td>
-                  <td>{project.customFund}</td>
+                  {/* <td>{project.customFund}</td> */}
+                  <td>{project.total ? Math.round(ethers.formatUnits(project.total, 18) * 1e18) : 'N/A'}</td>
+
+                  {/* <td>{ethers.formatUnits(project.customFund, 18) * 1e18 || 'N/A'}</td> */}
                   <td>{project.status}</td>
                   <td>
                     {project.status !== 'DONE' && (
@@ -175,9 +178,6 @@ const FundAllocationPage = () => {
         </div>
       </main>
 
-      <footer className="footer">
-        <p>© 2024 E-Municipality. All rights reserved.</p>
-      </footer>
     </div>
   );
 };
