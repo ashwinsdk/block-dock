@@ -100,7 +100,7 @@ Built a dynamic UI using React.js with the following features:
 - **Youtube**: [yt](https://www.youtube.com/)
 
 ## Contributors
-- **Ashwin Sudhakar**: Back-end, smart contract development, integration.
+- **Ashwin Sudhakar**: Back-end, smart contract development, integration, Front-end UI.
 - **Vishal Sagar Murthy**: Back-end, deployment.
 - **Adarsh BM**: Front-end development.
 - **Sanjana SN**: Front-end development.
