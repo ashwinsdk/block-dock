@@ -1,70 +1,109 @@
-# Getting Started with Create React App
+# Block-Dock
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A Blockchain-Based Urban Grievance Redressal and Fund Management System
 
-## Available Scripts
+<img width="1470" alt="index" src="https://github.com/user-attachments/assets/115fc9f7-ecee-44a4-a54c-7d11181988cb">
 
-In the project directory, you can run:
+<img width="1470" alt="user-home" src="https://github.com/user-attachments/assets/e7b24914-924c-4e3b-bff6-1c45d9722fe4">
 
-### `npm start`
+## Problem Statement
+Urban municipalities often face challenges in grievance management, fund allocation, and tax collection. Traditional systems lack transparency, experience frequent delays, and provide limited visibility into the utilization of funds and ongoing projects. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Solution
+Block-Dock is a blockchain-based governance platform that enhances transparency, efficiency, and security in urban administrative processes. The platform introduces role-based access control and immutable records to ensure seamless operations for grievance redressal, fund allocation, and project management.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Key Features
+### User Roles
+- **Users**: Urban residents who can:
+  - File grievances and track their status.
+  - View project details and information about AdminHead.
+  
+- **AdminHead** (Municipality Head): Responsible for:
+  - Requesting tokens from AdminGovt with purpose and amount.
+  - Managing grievances by updating their status (Accepted/Rejected).
+  - Creating and managing projects with details like name, due date, and contractor information.
+  - Searching user information dynamically.
 
-### `npm test`
+- **AdminGovt** (Government Officer): Responsible for:
+  - Approving or denying token requests from AdminHead.
+  - Monitoring grievance records and user details.
+  - Viewing all projects and transaction histories.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Blockchain Features
+1. **Role-Based Access Control**: Ensures data integrity and restricted operations based on user roles.
+2. **Token System**: Implements an ERC20-compatible token for fund transfers. 
+3. **Immutable Records**: Grievances, projects, and transactions are securely logged on the blockchain.
+4. **Wallet Authentication**: MetaMask integration enables secure and role-specific functionalities.
 
-### `npm run build`
+## Tech Stack
+- **Blockchain**: Solidity (v0.8.26), Sepolia Testnet
+- **Frontend**: React.js (v18.2.0), CSS
+- **Backend**: Node.js (v18.x)
+- **Smart Contract Framework**: Hardhat (v2.17.0)
+- **Wallet Integration**: MetaMask
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Approach
+### Smart Contract Development
+1. **Role Definition**: 
+   - Implemented roles for AdminGovt, AdminHead, and Users using access control.
+2. **Token System**: 
+   - Developed ERC20-compatible tokens for fund management with logged transaction histories.
+3. **Grievance Management**: 
+   - Structured grievances with fields for user details, descriptions, and status updates.
+4. **Project Management**: 
+   - Created project records with name, due time, and contractor details visible to all users.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Frontend Development
+Built a dynamic UI using React.js with the following features:
+- **Users**:
+  - Register and log in via wallet.
+  - File grievances and track status.
+  - View project details.
+- **AdminHead**:
+  - Request tokens and manage grievances.
+  - Create and manage projects.
+  - Search user information.
+- **AdminGovt**:
+  - Approve/deny token requests.
+  - Monitor grievances and transaction histories.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Blockchain Integration
+1. **MetaMask**: Wallet connection and role-based functionalities.
+2. **Smart Contract Deployment**: Tested and deployed contracts on the Sepolia testnet using Hardhat.
 
-### `npm run eject`
+## Prerequisites
+- Knowledge of blockchain concepts (smart contracts, wallets, tokens).
+- Understanding of React.js and JavaScript.
+- Installed tools:
+  - Node.js and npm
+  - MetaMask browser extension
+  - Hardhat for contract development and deployment
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Tools and Versions
+- **Solidity**: v0.8.26
+- **React.js**: v18.2.0
+- **Node.js**: v18.x
+- **Hardhat**: v2.17.0
+- **MetaMask**
+- **Sepolia Testnet**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Quick Links
+- **Google Drive**: [Block-Dock](https://drive.google.com/drive/folders/1l-qS6hGMx8savHD_4XNx7dWVMpCFE7DN?usp=sharing)
+- **GitHub Repository**: [Block-Dock](https://github.com/ashwinsdk/block-dock)
+  
+## Reference links
+- **Hardhat Documentation**: [Getting Started](https://hardhat.org/hardhat-runner/docs/getting-started)
+- **Web3.js Documentation**: [Web3.js Docs](https://web3js.readthedocs.io/en/v1.10.0/)
+- **Ethers.js Documentation**: [Ethers.js Docs](https://docs.ethers.org/v5/getting-started/)
+- **MetaMask Documentation**: [MetaMask Docs](https://developer.metamask.io/)
+- **OpenAI**: [Chatgpt](https://chat.openai.com/)
+- **Youtube**: [yt](https://www.youtube.com/)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Contributors
+- **Ashwin Sudhakar**: Back-end, smart contract development, integration.
+- **Vishal Sagar Murthy**: Back-end, deployment.
+- **Adarsh BM**: Front-end development.
+- **Sanjana SN**: Front-end development.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
