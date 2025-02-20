@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import './css/style.css';
+import transfer from './contracts/GrievanceSystem.json';
 import { ethers } from 'ethers';
-import transfer from './contracts/GrievanceSystem.json'; // Import the ABI properly
+
+ // Import the ABI properly
 
 const contractABI = transfer.abi;
 //const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
 //Sepolia 
 //const contractAddress = "0x26b01E3AD38E32645f308d11C81575D03f126da9";
-const contractAddress = "0xb93E6A9CA2C59267cBfb484Ac0F24440B19574ca"; // Update for your deployment
+const contractAddress ="0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f"; // Update for your deployment
 const FundAllocationPage = () => {
   const [projects, setProjects] = useState([]);
   const [newProject, setNewProject] = useState({ name: '', details: '', total: '' });

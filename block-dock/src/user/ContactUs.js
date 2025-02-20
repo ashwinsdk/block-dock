@@ -6,10 +6,11 @@ import { ethers } from 'ethers';
 import { useNavigate } from 'react-router-dom';
 import contractABI from './contracts/GrievanceSystem.json'; // Import the ABI
 import AdminHeadHome from '../admin/AdminHeadHome';
+
 //const contractAddress = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
 //Sepolia 
 //const contractAddress = "0x26b01E3AD38E32645f308d11C81575D03f126da9";
-const contractAddress = "0xb93E6A9CA2C59267cBfb484Ac0F24440B19574ca";
+const contractAddress = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
 
 const provider = new ethers.BrowserProvider(window.ethereum);
 const signer = await provider.getSigner();

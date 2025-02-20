@@ -8,23 +8,24 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   for (const account of accounts) {
     console.log(account.address);
   }
-})
-const privateKeySepolia = process.env.SEPOLIA_PRIVATE_KEY;
-const privateKeyLocalhost = process.env.LOCALHOST_PRIVATE_KEY;
+});
+
+const privateKeySepolia = process.env.SEPOLIA_PRIVATE_KEY || "";
+const privateKeyLocalhost = process.env.LOCALHOST_PRIVATE_KEY || "";
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
   solidity: "0.8.27",
-  defaultNetwork: "sepolia",
+  defaultNetwork: "localhost",
   networks: {
     hardhat: {},
     sepolia: {
-      url: process.env.SEPOLIA_RPC_URL,
-      accounts: [privateKeySepolia]
+      url: process.env.SEPOLIA_RPC_URL || "",
+      accounts: privateKeySepolia ? [String(privateKeySepolia)] : []
     },
     localhost: {
-      url: "http://127.0.0.1:8545",
-      accounts: [privateKeyLocalhost]
+      url: process.env.LOCALHOST_RPC_URL || "http://127.0.0.1:8545",
+      accounts: privateKeyLocalhost ? [String(privateKeyLocalhost)] : []
     }
   }
 };

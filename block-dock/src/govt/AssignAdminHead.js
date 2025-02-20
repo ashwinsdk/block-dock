@@ -20,7 +20,7 @@ const AssignAdminHead = () => {
 
   //const PUBLIC_ADDRESS = "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0";
   //Sepolia 
-  const PUBLIC_ADDRESS = "0x26b01E3AD38E32645f308d11C81575D03f126da9";
+  const PUBLIC_ADDRESS = "0x73511669fd4dE447feD18BB79bAFeAC93aB7F31f";
   //const PUBLIC_ADDRESS = "0xb93E6A9CA2C59267cBfb484Ac0F24440B19574ca";
 
   const transfer = require("./contracts/GrievanceSystem.json");
