@@ -1,70 +1,175 @@
-# Getting Started with Create React App
+# BlockDock
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+BlockDock is a decentralized e-municipality grievance management system built on the Ethereum blockchain. It enables citizens to file grievances, government administrators to manage funds and projects, and ensures transparency and immutability through blockchain technology.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **User Registration and Authentication**: Citizens can register and log in to access the system.
+- **Grievance Filing**: Users can submit grievances which are stored on the blockchain.
+- **Role-Based Access Control**: Separate dashboards for Users, Admin Heads, and Government Admins.
+- **Fund Management**: Government admins can allocate funds to admin heads for projects.
+- **Project Tracking**: Admin heads can create and manage ongoing projects.
+- **Token-Based Economy**: Internal token system for fund transfers within the system.
+- **Transparent Ledger**: All transactions and changes are recorded on the blockchain for auditability.
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React.js with React Router for navigation, Chart.js for data visualization, and Ethers.js for blockchain interaction.
+- **Backend/Smart Contracts**: Solidity smart contracts deployed using Hardhat.
+- **Blockchain**: Ethereum (compatible with local networks like Hardhat Network).
+- **Development Tools**: Hardhat for contract compilation and testing, MetaMask for wallet integration.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Prerequisites
 
-### `npm test`
+Before running this project, ensure you have the following installed:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js (v16 or higher)
+- npm or yarn
+- Git
+- A web3 wallet like MetaMask (for interacting with the blockchain)
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/ashwinsdk/block-dock.git
+   cd block-dock
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install Backend Dependencies**:
+   ```bash
+   cd backend
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Install Frontend Dependencies**:
+   ```bash
+   cd ../block-dock
+   npm install
+   ```
 
-### `npm run eject`
+4. **Set Up Environment Variables**:
+   - Create a `.env` file in the `backend` directory.
+   - Add your Ethereum network configuration (e.g., for local Hardhat network or testnets like Sepolia).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Deployment
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Deploy Smart Contracts
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Navigate to the backend directory:
+   ```bash
+   cd backend
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Compile the contracts:
+   ```bash
+   npx hardhat compile
+   ```
 
-## Learn More
+3. Deploy to local network:
+   ```bash
+   npx hardhat run scripts/deploy-localhost.js --network localhost
+   ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   Or deploy to a testnet (ensure your `.env` is configured):
+   ```bash
+   npx hardhat run scripts/deploy.js --network <network-name>
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+4. Note the deployed contract address and update the frontend contract JSON files if necessary.
 
-### Code Splitting
+### Run the Application
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+1. **Start the Backend (Local Blockchain)**:
+   ```bash
+   cd backend
+   npx hardhat node
+   ```
 
-### Analyzing the Bundle Size
+2. **Deploy Contracts to Local Network** (in a new terminal):
+   ```bash
+   cd backend
+   npx hardhat run scripts/deploy-localhost.js --network localhost
+   ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. **Start the Frontend**:
+   ```bash
+   cd ../block-dock
+   npm start
+   ```
 
-### Making a Progressive Web App
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Usage
 
-### Advanced Configuration
+### For Users
+- Register and log in.
+- File grievances through the dashboard.
+- View status of submitted grievances.
+- Access government funds and ongoing projects information.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### For Admin Heads
+- View and update grievance statuses.
+- Request funds from government admins.
+- Create and manage projects.
+- Monitor token balances.
 
-### Deployment
+### For Government Admins
+- Assign admin heads.
+- Approve fund requests.
+- View all users, grievances, projects, and fund requests.
+- Manage overall system funds.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Project Structure
 
-### `npm run build` fails to minify
+```
+block-dock/
+├── backend/                 # Smart contracts and deployment scripts
+│   ├── contracts/           # Solidity contracts (EM.sol)
+│   ├── scripts/             # Deployment and interaction scripts
+│   └── hardhat.config.js    # Hardhat configuration
+├── block-dock/              # React frontend
+│   ├── src/
+│   │   ├── admin/           # Admin head components
+│   │   ├── govt/            # Government admin components
+│   │   ├── user/            # User components
+│   │   └── App.js           # Main app component
+│   └── public/              # Static assets
+├── docs/                    # Documentation
+└── README.md                # This file
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Scripts
+
+### Backend Scripts
+- `npx hardhat compile`: Compile smart contracts
+- `npx hardhat test`: Run contract tests
+- `npx hardhat node`: Start local Ethereum network
+- `npx hardhat run scripts/deploy-localhost.js --network localhost`: Deploy to local network
+
+### Frontend Scripts
+- `npm start`: Start development server
+- `npm run build`: Build for production
+- `npm test`: Run tests
+
+## Contributing
+
+1. Fork the repository.
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`).
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).
+4. Push to the branch (`git push origin feature/AmazingFeature`).
+5. Open a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Built with Hardhat and React
+- Inspired by the need for transparent governance systems
+- Ethereum community for blockchain infrastructure
+
+## Contact
+
+For questions or support, please open an issue on GitHub or contact the maintainers.

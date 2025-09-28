@@ -21,10 +21,10 @@ function Home() {
       <section id="who-we-are">
         <h2>BLOCK-DOCK</h2>
         <p>
-          Block-Dock is a blockchain-powered platform designed to bring transparency, efficiency, and accountability to urban governance. We specialize in grievance redressal, tax collection, and fund management systems, ensuring seamless interaction between citizens and municipalities.
+          Block-Dock is a blockchain-powered platform designed to bring transparency, efficiency, and accountability to urban governance. We specialize in grievance redressal, and fund management systems, ensuring seamless interaction between citizens and government. Our platform is built on the Ethereum blockchain, providing a secure and tamper-proof environment for all transactions.
         </p>
         <p>
-          Our platform empowers citizens to file grievances, track municipal taxes, and monitor urban development projects. For municipalities, we provide tools for efficient fund allocation and project management, fostering trust and collaboration with the community.
+          Our platform empowers citizens to file grievances, and monitor urban development projects. For Admins, we provide tools for efficient fund allocation and project management, fostering trust and collaboration with the community.
         </p>
       </section>
 
